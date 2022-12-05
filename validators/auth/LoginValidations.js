@@ -1,6 +1,6 @@
     const LoginDataValidate = (req, res, next) => {
-        if(req.query.email){
-            if (!isValidEmail(req.query.email)) {
+        if(req.body.email){
+            if (!isValidEmail(req.body.email)) {
             return res.status(400).json({
                 status: false,
                 status_code: 400,
@@ -16,7 +16,7 @@
             error: 'Please insert your email'
             });
         }
-        if (!req.query.password) {
+        if (!req.body.password) {
             return res.status(400).json({
                 status: false,
                 status_code: 400,

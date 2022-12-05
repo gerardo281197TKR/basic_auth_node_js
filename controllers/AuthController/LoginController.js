@@ -6,8 +6,8 @@ const moment = require('moment');
 dotenv.config();
 
 const login = async (req, res) => {
-	let email_user = req.query.email;
-	let passw_user = req.query.password;
+	let email_user = req.body.email;
+	let passw_user = req.body.password;
 	const user = await User.findOne({
 		where:{
 			email: email_user,
@@ -46,7 +46,7 @@ const login = async (req, res) => {
 					});
 				});
 			}else{
-				res.json({
+				return res.json({
 					'status':true,
 					'code':419,
 					'message':'User or password not allowed'
@@ -54,8 +54,7 @@ const login = async (req, res) => {
 			}
 		}
 	}).catch(function(err){
-		console.log(err)
-		res.json({
+		return res.json({
 			'status':false,
 			'code':500,
 			'message':'Error in database'

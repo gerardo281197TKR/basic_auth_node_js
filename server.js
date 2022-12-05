@@ -6,6 +6,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 //console.log(`Your port is ${process.env.PROJECT_PORT}`); 
 
+const cors = require('cors')
+app.use(cors())
+
 //`` alt derecho + C, arriba de shift derecho jaja 
 app.use(bodyParser.urlencoded({ extended: true }))
 
